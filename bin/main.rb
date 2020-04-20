@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env ruby
 
 
@@ -56,3 +57,5 @@ end
 
 
 
+=======
+>>>>>>> parent of 432c0fb... add main.rb exucutable
