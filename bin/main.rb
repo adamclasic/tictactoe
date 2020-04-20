@@ -17,11 +17,12 @@ p "#{player_2} will be playin with #{player_2_letter}"
 
 
 
-until 5.times
+5.times do
 
     x1 = ['x', 'o', 'x']
-    x1 = ['x', 'o', 'x']
-    x1 = ['x', 'o', 'x']
+     p 'enter a letter: '
+     gets.chomp
+
     
     p "      1   2   3  "    
     p "    -------------"    
@@ -32,11 +33,6 @@ until 5.times
     p "  C | #{x1[1]} | #{x1[2]} | #{x1[0]} |"
     p "    -------------"
 
-
-    'adam enter you r move'
-    p1 
-    'pilip enter you r move'
-    p2
 end
 
 
