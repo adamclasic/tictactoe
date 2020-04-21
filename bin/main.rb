@@ -1,48 +1,47 @@
 #!/usr/bin/env ruby
 
-p 'enter name of player 1'
-player_1 = gets.chomp
-p "enter letter"
+p 'enter name of player 1 or press Enter to skip'
+input_1 = gets.chomp
+input_1 == '' ? 'player 1' : input_1
+p 'enter a letter to play with'
 player_1_letter = gets.chomp
-p "#{player_1} chose #{player_1_letter}"
-p 'enter name of player 2'
-player_2 = gets.chomp
-p "enter letter"
-player_2_letter = "O" if player_1_letter == "X"
-player_2_letter = "X" if player_1_letter == "O"
-p "#{player_2} will be playin with #{player_2_letter}"
+p "#{input_1} chose #{player_1_letter}"
+
+p 'enter name of player 2 or press Enter to skip'
+input_2 = gets.chomp
+input_2 == '' ? 'player 2' : input_2
+player_2_letter = 'O' if player_1_letter == 'X'
+player_2_letter = 'X' if player_1_letter == 'O'
+p "#{input_2} will be playin with #{player_2_letter}"
+
+sleep(1.5)
+puts ''
+
+p "The game will start ..."
+
+puts ''
+sleep(2)
+puts ''
+puts ''
 
 
+10.times do |i|
+  player = input_1 if i.even?
+  player = input_2 if i.odd?
 
-5.times do
+  p "#{player} enter Horizontal position  with a letter "
+  gets.chomp
+  p "#{player} enter Vertical position  with a number "
+  gets.chomp
 
-    x1 = ['x', 'o', 'x']
-     p 'enter a letter: '
-     gets.chomp
+  x1 = [%w[x o x], %w[x o x], %w[x o x]]
 
-    
-    p "      1   2   3  "    
-    p "    -------------"    
-    p "  A | #{x1[1]} | #{x1[2]} | #{x1[0]} |"
-    p "    -------------"
-    p "  B | #{x1[1]} | #{x1[2]} | #{x1[0]} |"
-    p "    -------------"
-    p "  C | #{x1[1]} | #{x1[2]} | #{x1[0]} |"
-    p "    -------------"
-
+  p '      1   2   3  '
+  p '    -------------'
+  p "  A | #{x1[0][0]} | #{x1[0][1]} | #{x1[0][2]} |"
+  p '    -------------'
+  p "  B | #{x1[1][0]} | #{x1[2][1]} | #{x1[0][2]} |"
+  p '    -------------'
+  p "  C | #{x1[2][1]} | #{x1[2][1]} | #{x1[2][2]} |"
+  p '    -------------'
 end
-
-
-
-
-
-# p 'enter Player 1 name'
-# player_1 = gets.chomp
-# p "choose a letter O or X for #{player_1} to play with"
-# player_1_letter = gets.chomp
-
-
-# p 'enter Player 2 name'
-# player_2 = gets.chomp
-# p "choose a letter O or X for #{player_2} to play with"
-# player_2_letter = gets.chomp 
