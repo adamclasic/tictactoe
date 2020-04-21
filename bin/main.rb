@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-
-
-
 p 'enter name of player 1'
 player_1 = gets.chomp
 p "enter letter"
@@ -49,6 +46,3 @@ end
 # player_2 = gets.chomp
 # p "choose a letter O or X for #{player_2} to play with"
 # player_2_letter = gets.chomp 
-
-
-
