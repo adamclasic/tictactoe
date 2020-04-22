@@ -10,7 +10,7 @@ puts "Note: Player names are optional (just press 'Enter' to continue)"
 puts ''
 puts ''
 
-#Get user input and set it to a variable
+# Get user input and set it to a variable
 p 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
 input1 == '' ? 'player 1' : input1
@@ -36,7 +36,7 @@ game_on = true
 player = input1 # if i.even?
 # player = input2 if i.odd?
 
-while game_on #Loop for each move
+while game_on # Loop for each move
 
   p "#{player} enter Horizontal position  with a letter "
   gets.chomp
@@ -44,7 +44,7 @@ while game_on #Loop for each move
   gets.chomp
 
   valid = true
-  unless valid #checks if input from user is valid
+  unless valid # checks if input from user is valid
     puts "Error, input invalid. Please enter 'X' or 'O'"
     next
   end
@@ -61,12 +61,12 @@ while game_on #Loop for each move
   p '    -------------'
 
   draw = false
-  if draw #Condition for when game is draw
+  if draw # Condition for when game is draw
     puts 'this is a Draw'
     game_on = false
   end
 
   winner = true
-  game_on = false if winner #terminates when we have a winner
+  game_on = false if winner # terminates when we have a winner
 
 end
