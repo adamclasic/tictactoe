@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+require_relative './tictactoe.rb'
 # user instructions
 puts 'Welcome to **Tic-Tac-toe**'
 puts 'In this game whichever player gets the first similar letters in a row, column or diagonal Wins!.'
