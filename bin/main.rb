@@ -65,8 +65,12 @@ while game_on # Loop for each move
     puts 'this is a Draw'
     game_on = false
   end
-
+  
   winner = true
-  game_on = false if winner # terminates when we have a winner
+
+  if winner
+    puts "Player 1/2 is the winner of this round"
+    game_on = false  # terminates when we have a winner
+  end
 
 end
