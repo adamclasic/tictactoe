@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative './tictactoe.rb'
+require_relative '../lib/tictactoe.rb'
 
 puts
 puts 'Welcome to **Tic-Tac-toe**'
