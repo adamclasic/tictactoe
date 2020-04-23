@@ -26,7 +26,7 @@
     <img src="images/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
-  <hO align="center">Tic Tac Toe</hO>
+  <h1 align="center">Tic Tac Toe</h1>
 
   <p align="center">
     This project is part of the Microverse curriculum in Ruby module!
