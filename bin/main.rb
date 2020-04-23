@@ -1,78 +1,88 @@
 #!/usr/bin/env ruby
 require_relative './tictactoe.rb'
-# user instructions
+
+puts
 puts 'Welcome to **Tic-Tac-toe**'
-puts 'In this game whichever player gets the first similar letters in a row, column or diagonal Wins!.'
-puts "There are only two letters to pick from 'X' and 'O'."
-puts 'At the begining of the game, each player will choose which letter they will be playing with,'
-puts 'once one player has selected a letter, the otherone is assigned the other letter automatically.'
-puts "Note: Player names are optional (just press 'Enter' to continue)"
-puts ''
-puts ''
+Tictactoe.print_table_empty
+puts "In this game, there are only two letters to play with 'X' and 'O'. Whichever player gets the first similar letters in an entire row, column or diagonal WINS!!!."
+puts
+puts "At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically."
+puts
 
-# Get user input and set it to a variable
-p 'Enter name of player 1 or press Enter to skip'
+puts 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
-input1 == '' ? 'player 1' : input1
-p 'enter a letter to play with'
-player_1_letter = gets.chomp
-p "#{input1} chose #{player_1_letter}"
+input1 == '' ? input1 = 'player 1' : input1
 
-p 'Enter name of player 2 or press Enter to skip'
+puts 'enter a letter to play with'
+player_1_letter = gets.chomp.upcase
+until %w[X O].include?(player_1_letter)
+  puts 'enter a valid letter to play with'
+  letter = gets.chomp.upcase
+  player_1_letter = letter if Tictactoe.valid_letter?(letter)
+end
+
+puts "#{input1} chose #{player_1_letter}"
+
+puts 'Enter name of player 2 or press Enter to skip'
 input2 = gets.chomp
-input2 == '' ? 'player 2' : input2
+input2 == '' ? input2 = 'player 2' : input2
 player_2_letter = 'O' if player_1_letter == 'X'
 player_2_letter = 'X' if player_1_letter == 'O'
-p "#{input2} will be playin with #{player_2_letter}"
+puts "#{input2} will be playin with #{player_2_letter}"
 
 puts ''
 
-p 'The game will start ...'
+puts 'The game will start ...'
 
 puts ''
 
 game_on = true
 
-player = input1 # if i.even?
-# player = input2 if i.odd?
+game = Tictactoe.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
-while game_on # Loop for each move
+Tictactoe.draw_table
 
-  p "#{player} enter Horizontal position  with a letter "
-  gets.chomp
-  p "#{player} enter Vertical position  with a number "
-  gets.chomp
+i = 0
+while game_on
+  player_letter = player_1_letter if i.even?
+  player_name = input1 if i.even?
+  player_letter = player_2_letter if i.odd?
+  player_name = input2 if i.odd?
 
-  valid = true
-  unless valid # checks if input from user is valid
-    puts "Error, input invalid. Please enter 'X' or 'O'"
-    next
+  puts "#{player_name} enter a position from 1 to 9 "
+  location = gets.chomp.to_i - 1
+  valid = game.valid_entry?(location)
+  unless valid
+    until valid
+      puts "Error, input invalid. #{player_name} Please re enter"
+      location = gets.chomp.to_i - 1
+      valid = game.valid_entry?(location)
+    end
   end
 
-  x1 = [%w[x o x], %w[x o x], %w[x o x]]
+  table = game.add_to_table(player_letter, location)
 
-  p '      1   2   3  '
-  p '    -------------'
-  p "  A | #{x1[0][0]} | #{x1[0][1]} | #{x1[0][2]} |"
-  p '    -------------'
-  p "  B | #{x1[1][0]} | #{x1[2][1]} | #{x1[0][2]} |"
-  p '    -------------'
-  p "  C | #{x1[2][1]} | #{x1[2][1]} | #{x1[2][2]} |"
-  p '    -------------'
+  puts '      1   2   3  '
+  puts '    -------------'
+  puts "  1 | #{table[0]} | #{table[1]} | #{table[2]} | 3"
+  puts '    -------------'
+  puts "  4 | #{table[3]} | #{table[4]} | #{table[5]} | 6"
+  puts '    -------------'
+  puts "  7 | #{table[6]} | #{table[7]} | #{table[8]} | 9"
+  puts '    -------------'
+  puts '      7   8   9  '
 
-  draw = false
-  if draw # Condition for when game is draw
-    puts 'this is a Draw'
+  winner = Code.winner?(table, player_letter)
+
+  if winner
+    puts "#{player_name} has won the game!"
     game_on = false
   end
 
-  winner = true
-
-  if winner
-    puts 'Player 1/2 is the winner of this round'
-    game_on = false # terminates when we have a winner
+  draw = Code.draw?(table)
+  if draw && !winner
+    puts 'this is a Draw'
+    game_on = false
   end
-
-  # added SSH KEY Test
-
+  i += 1
 end
