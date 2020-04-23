@@ -17,28 +17,28 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![Run on Repl.it](https://repl.it/badge/github/rammazzoti2000/tic-toc-toe)](https://repl.it/@AlexandruBangau/tic-toc-toe)
+[![Run on Repl.it](https://repl.it/badge/github/adamclasic/tictactoe)](https://repl.it/@PhillipUg/tictactoe )
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/rammazzoti2000/tic-toc-toe">
+  <a href="https://github.com/adamclasic/tictactoe">
     <img src="images/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Tic Tac Toe</h3>
+  <hO align="center">Tic Tac Toe</hO>
 
   <p align="center">
     This project is part of the Microverse curriculum in Ruby module!
     <br />
-    <a href="https://github.com/rammazzoti2000/tic-toc-toe"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/adamclasic/tictactoe"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://repl.it/@AlexandruBangau/tic-toc-toe">View Demo</a>
+    <a href="https://repl.it/@PhillipUg/tictactoe ">View Demo</a>
     ·
-    <a href="https://github.com/rammazzoti2000/tic-toc-toe/issues">Report Bug</a>
+    <a href="https://github.com/adamclasic/tictactoe/issues">Report Bug</a>
     ·
-    <a href="https://github.com/rammazzoti2000/tic-toc-toe/issues">Request Feature</a>
+    <a href="https://github.com/adamclasic/tictactoe/issues">Request Feature</a>
   </p>
 </p>
 
@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://repl.it/@AlexandruBangau/tic-toc-toe)
+[![Product Name Screen Shot][product-screenshot]](https://repl.it/@PhillipUg/tictactoe )
 
 This is the third project of the Microverse Ruby Module
 
@@ -66,14 +66,14 @@ This is also the first project of the [Odin project curriculum](https://www.theo
 
 To play this game you need to:
 * have ruby installed in your computer
-* [download](https://github.com/rammazzoti2000/tic-toc-toe/archive/master.zip) or clone this repo:
+* [download](https://github.com/adamclasic/tictactoe/archive/master.zip) or clone this repo:
   - Clone with SSH:
   ```
-    git@github.com:rammazzoti2000/tic-toc-toe.git
+    git@github.com:adamclasic/tictactoe.git
   ```
   - Clone with HTTPS
   ```
-    https://github.com/rammazzoti2000/tic-toc-toe.git
+    https://github.com/adamclasic/tictactoe.git
   ```
 * and execute bin/main.rb file using your terminal
 
@@ -81,52 +81,52 @@ To play this game you need to:
 
   * This is a customized version of the original [tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game. Tha basic rules remain unchanged, the tokens to play with have changed instead.
 
-  * The game is played on a 3 by 3 grid
+  * The game is played on a O by O grid
   ```
-      1  |   2   |   3    
+      X  |   X   |   X    
     ----------------------
-      4  |   5   |   6    
+      X  |   O   |   O    
     ----------------------
-      7  |   8   |   9    
+      X  |   X   |   X      
   ```
 
-  * The tokens you will play with in this game version will be "rum" and "vodka". While the first player will have the option to choose from the given tokens, the second player will have the token automatically assigned.
+  * The tokens you will play with in this game version will be " O " and " X ". While the first player will have the option to choose from the given tokens, the second player will have the token automatically assigned.
   * Each player will take turns putting their assigned token in empty squares.
     ```
-      Player 1 turn - "rum"
+      Player X turn - " O "
 
-          rum  |   2   |   3  
+           O   |   X   |   X  
         ----------------------
-           4   |   5   |   6  
+           X   |   O   |   O  
         ----------------------
-           7   |   8   |   9  
+           X   |   X   |   X    
 
-      Player 2 turn - "vodka"
+      Player O turn - " X "
 
-         rum  |   2   |   3  
+          O   |   X   |   X  
         ----------------------
-           4  |   5   |   6  
+           X  |   O   |   O  
         ----------------------
-        vodka |   8   |   9  
+           X  |   X   |   X    
     ```
-    * The first player to get 3 tokens in a row (up, down, across, or diagonally) wins.
+    * The first player to get O tokens in a row (up, down, across, or diagonally) wins.
     ```
-        Winning combinations (W is either "rum" or "vodka").
+        Winning combinations (W is either " O   " or " X ").
 
-          W | W | W    1 | 2 | 3     1 | 2 | 3     W | 2 | 3     1 | W | 3     1 | 2 | W     W | 2 | 3     1 | 2 | W 
-         -----------  -----------   -----------  -----------    -----------   -----------   -----------   -----------
-          4 | 5 | 6    W | W | W     4 | 5 | 6     W | 5 | 6     4 | W | 6     4 | 5 | W     4 | W | 6     4 | W | 6 
-         -----------  -----------   -----------  -----------    -----------   -----------   -----------   -----------
-          7 | 8 | 9    7 | 8 | 9     W | W | W     W | 8 | 9     7 | W | 9     7 | 8 | W     7 | 8 | W     W | 8 | 9 
+          X | O | O    X | X | X     X | O | O     O | O | O
+         -----------  -----------   -----------  -----------
+          X | X | O    O | O | O     X | X | O     O | X | O
+         -----------  -----------   -----------  -----------
+          X | X | X    X | X | X     O | O | O     O | X | O
     ```
-    * When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends and nobody wins.
+    * When all X squares are full, the game is over. If no player has O marks in a row, the game ends and nobody wins.
 
       ```
-          rum  | vodka |  rum  
+           O   |  X   |  O     
         ----------------------
-          rum  | vodka | vodka 
+           O   |  X   |  X    
         ----------------------
-         vodka |  rum  |  rum  
+           X   |  O   |  O     
       ```
 
 
@@ -141,22 +141,24 @@ This project was built using these technologies.
 <!-- LIVE VERSION -->
 ## Live version
 
-You can see it working [here](https://repl.it/@AlexandruBangau/tic-toc-toe)
+You can see it working [here](https://repl.it/@PhillipUg/tictactoe )
 
 <!-- CONTACT -->
 ## Contributors
 
-👤 **Jaspreet Singh** 
-    
-- LinkedIn: [Jaspreet Singh](https://www.linkedin.com/in/jaspreet-singh-a28286146/) - 
-- GitHub: [@jaspreet-singh-sahota](https://github.com/jaspreet-singh-sahota)
-- E-mail: jaspreetsinghjassi01@gmail.com
 
-👤 **Alexandru Bangau**
+👤 **Phillip Musiime**
 
-- LinkedIn: [Alexandru Bangau](https://www.linkedin.com/in/alexandru-bangau/)
-- GitHub: [@rammazzoti2000](https://github.com/rammazzoti2000)
-- E-mail: bangau.alexandru@gmail.com
+- LinkedIn: [Phillip Musiime](https://www.linkedin.com/in/phillip-musiime-74657019a/)
+- GitHub: [PhillipUg](https://github.com/PhillipUg)
+- Twitter: [@Phillip_Ug](https://twitter.com/Phillip_Ug)
+- E-mail: phillipmusiime@gmail.com
+
+👤 **Abderrahmane Adam Allalou**
+
+- LinkedIn: [Abderrahmane Adam Allalou](https://www.linkedin.com/in/abderrahmane-allalou/)
+- GitHub: [@adamclasic](https://github.com/adamclasic)
+- E-mail: aabou9@gmail.com
 
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -168,14 +170,14 @@ You can see it working [here](https://repl.it/@AlexandruBangau/tic-toc-toe)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/rammazzoti2000/tic-toc-toe.svg?style=flat-square
-[contributors-url]: https://github.com/rammazzoti2000/tic-toc-toe/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/rammazzoti2000/tic-toc-toe.svg?style=flat-square
-[forks-url]: https://github.com/rammazzoti2000/tic-toc-toe/network/members
-[stars-shield]: https://img.shields.io/github/stars/rammazzoti2000/tic-toc-toe.svg?style=flat-square
-[stars-url]: https://github.com/rammazzoti2000/tic-toc-toe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/rammazzoti2000/tic-toc-toe.svg?style=flat-square
-[issues-url]: https://github.com/rammazzoti2000/tic-toc-toe/issues
+[contributors-shield]: https://img.shields.io/github/contributors/adamclasic/tictactoe.svg?style=flat-square
+[contributors-url]: https://github.com/adamclasic/tictactoe/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/adamclasic/tictactoe.svg?style=flat-square
+[forks-url]: https://github.com/adamclasic/tictactoe/network/members
+[stars-shield]: https://img.shields.io/github/stars/adamclasic/tictactoe.svg?style=flat-square
+[stars-url]: https://github.com/adamclasic/tictactoe/stargazers
+[issues-shield]: https://img.shields.io/github/issues/adamclasic/tictactoe.svg?style=flat-square
+[issues-url]: https://github.com/adamclasic/tictactoe/issues
 [product-screenshot]: images/tic-tac-toe.png
 
 ## 📝 License
