@@ -79,9 +79,9 @@ To play this game you need to:
 
 ## Game Rules
 
-  * This is a customized version of the original [tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game. Tha basic rules remain unchanged, the tokens to play with have changed instead.
+  * This is a customized version of the original [tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game. The basic rules remain unchanged, the tokens to play with have changed instead.
 
-  * The game is played on a O by O grid
+  * The game is played on a 3 by 3 grid
   ```
       X  |   X   |   X    
     ----------------------
@@ -90,28 +90,37 @@ To play this game you need to:
       X  |   X   |   X      
   ```
 
-  * The tokens you will play with in this game version will be " O " and " X ". While the first player will have the option to choose from the given tokens, the second player will have the token automatically assigned.
-  * Each player will take turns putting their assigned token in empty squares.
+  * In this game, there are only two letters to play with 'X' and 'O'. Whichever player gets the first similar letters in an entire row, column or diagonal WINS!!!.
+  * At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically.
+  * Once the players both have letters to play with, they will use numbers 1 through 9 to select a position on the game board. for example:
     ```
-      Player X turn - " O "
+      Player playing with 'X' enters position '2'.
 
-           O   |   X   |   X  
-        ----------------------
-           X   |   O   |   O  
-        ----------------------
-           X   |   X   |   X    
+          1   2   3  
+        -------------
+      1 |   | X |   | 3
+        -------------
+      4 |   |   |   | 6
+        -------------
+      7 |   |   |   | 9
+        -------------
+          7   8   9    
 
-      Player O turn - " X "
+      Player playing with 'O' enter position '5'.
 
-          O   |   X   |   X  
-        ----------------------
-           X  |   O   |   O  
-        ----------------------
-           X  |   X   |   X    
+          1   2   3  
+        -------------
+      1 |   |   |   | 3
+        -------------
+      4 |   | O |   | 6
+        -------------
+      7 |   |   |   | 9
+        -------------
+          7   8   9   
     ```
-    * The first player to get O tokens in a row (up, down, across, or diagonally) wins.
+    * The first player to get their letters in a row (up, down, across, or diagonally) wins e.g.
     ```
-        Winning combinations (W is either " O   " or " X ").
+  
 
           X | O | O    X | X | X     X | O | O     O | O | O
          -----------  -----------   -----------  -----------
@@ -119,7 +128,7 @@ To play this game you need to:
          -----------  -----------   -----------  -----------
           X | X | X    X | X | X     O | O | O     O | X | O
     ```
-    * When all X squares are full, the game is over. If no player has O marks in a row, the game ends and nobody wins.
+    * When all squares are full and no player has won, then game ends in as a Draw e.g.
 
       ```
            O   |  X   |  O     
