@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../lib/Game.rb'
+require_relative '../lib/game.rb'
 
 puts
 puts 'Welcome to **Tic-Tac-toe**'

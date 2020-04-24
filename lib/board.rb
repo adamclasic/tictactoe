@@ -1,4 +1,5 @@
-class Code
+ 
+class Board
   def self.winner?(arr, player)
     return true if [
       [arr[0], arr[1], arr[2]].all?(player),
@@ -21,4 +22,6 @@ class Code
 
     true
   end
+
+
 end

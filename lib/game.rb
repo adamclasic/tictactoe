@@ -1,4 +1,4 @@
-require_relative './Board.rb'
+require_relative './board.rb'
 
 class Game
   def initialize(arr)
@@ -26,8 +26,6 @@ class Game
       @current_player_letter = @player2_letter
     end
   end
-
-  
   
   def winner?
     Board.winner?(@table, @current_player_letter)
