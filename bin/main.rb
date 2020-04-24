@@ -50,7 +50,6 @@ puts 'The game will start ...'
 
 puts ''
 
-
 game_on = true
 
 # puts '      1   2   3  '
@@ -72,7 +71,7 @@ while game_on
     puts "Error, input invalid. #{game.current_player_name} Please re enter"
     position = gets.chomp
   end
-   
+
   table = game.add_to_table(position.to_i)
 
   puts '      1   2   3  '
