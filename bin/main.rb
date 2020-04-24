@@ -50,25 +50,30 @@ puts 'The game will start ...'
 
 puts ''
 
+
 game_on = true
 
-puts '      1   2   3  '
-puts '    -------------'
-puts '  1 |   |   |   | 3'
-puts '    -------------'
-puts '  4 |   |   |   | 6'
-puts '    -------------'
-puts '  7 |   |   |   | 9'
-puts '    -------------'
-puts '      7   8   9  '
+# puts '      1   2   3  '
+# puts '    -------------'
+# puts '  1 |   |   |   | 3'
+# puts '    -------------'
+# puts '  4 |   |   |   | 6'
+# puts '    -------------'
+# puts '  7 |   |   |   | 9'
+# puts '    -------------'
+# puts '      7   8   9  '
 
 i = 0
 while game_on
   game.current_player(i)
-
-  game.valid_position?
-
-  table = game.add_to_table
+  puts "#{game.current_player_name} enter a position from 1 to 9 "
+  position = gets.chomp
+  until game.valid_position?(position)
+    puts "Error, input invalid. #{game.current_player_name} Please re enter"
+    position = gets.chomp
+  end
+   
+  table = game.add_to_table(position.to_i)
 
   puts '      1   2   3  '
   puts '    -------------'
