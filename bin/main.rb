@@ -1,25 +1,36 @@
 #!/usr/bin/env ruby
-require_relative '../lib/tictactoe.rb'
+require_relative '../lib/Game.rb'
 
 puts
 puts 'Welcome to **Tic-Tac-toe**'
-Tictactoe.print_table_empty
+puts '      1   2   3  '
+puts '    -------------'
+puts '  1 | X | O | X | 3'
+puts '    -------------'
+puts '  4 | O | X | O | 6'
+puts '    -------------'
+puts '  7 | X | O | X | 9'
+puts '    -------------'
+puts '      7   8   9  '
 puts "In this game, there are only two letters to play with 'X' and 'O'. Whichever player gets the first similar letters in an entire row, column or diagonal WINS!!!."
 puts
 puts "At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically."
 puts
+game = Game.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
 puts 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
 input1 == '' ? input1 = 'player 1' : input1
-
 puts 'enter a letter to play with'
 player_1_letter = gets.chomp.upcase
 until %w[X O].include?(player_1_letter)
   puts 'enter a valid letter to play with'
   letter = gets.chomp.upcase
-  player_1_letter = letter if Tictactoe.valid_letter?(letter)
+  player_1_letter = letter if Game.valid_letter?(letter)
 end
+
+game.player1_name = input1
+game.player1_letter = player_1_letter
 
 puts "#{input1} chose #{player_1_letter}"
 
@@ -32,35 +43,33 @@ puts "#{input2} will be playin with #{player_2_letter}"
 
 puts ''
 
+game.player2_name = input2
+game.player2_letter = player_2_letter
+
 puts 'The game will start ...'
 
 puts ''
 
 game_on = true
 
-game = Tictactoe.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
-Tictactoe.draw_table
+puts '      1   2   3  '
+puts '    -------------'
+puts '  1 |   |   |   | 3'
+puts '    -------------'
+puts '  4 |   |   |   | 6'
+puts '    -------------'
+puts '  7 |   |   |   | 9'
+puts '    -------------'
+puts '      7   8   9  '
 
 i = 0
 while game_on
-  player_letter = player_1_letter if i.even?
-  player_name = input1 if i.even?
-  player_letter = player_2_letter if i.odd?
-  player_name = input2 if i.odd?
+  game.current_player(i)
 
-  puts "#{player_name} enter a position from 1 to 9 "
-  location = gets.chomp.to_i - 1
-  valid = game.valid_entry?(location)
-  unless valid
-    until valid
-      puts "Error, input invalid. #{player_name} Please re enter"
-      location = gets.chomp.to_i - 1
-      valid = game.valid_entry?(location)
-    end
-  end
+  game.valid_position?
 
-  table = game.add_to_table(player_letter, location)
+  table = game.add_to_table
 
   puts '      1   2   3  '
   puts '    -------------'
@@ -72,14 +81,14 @@ while game_on
   puts '    -------------'
   puts '      7   8   9  '
 
-  winner = Code.winner?(table, player_letter)
+  winner = game.winner?
 
   if winner
-    puts "#{player_name} has won the game!"
+    puts "#{game.current_player_name} has won the game!"
     game_on = false
   end
 
-  draw = Code.draw?(table)
+  draw = game.no_winner?
   if draw && !winner
     puts 'this is a Draw'
     game_on = false
