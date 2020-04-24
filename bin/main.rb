@@ -52,7 +52,6 @@ puts ''
 
 game_on = true
 
-
 puts '      1   2   3  '
 puts '    -------------'
 puts '  1 |   |   |   | 3'

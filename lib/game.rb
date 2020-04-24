@@ -26,15 +26,15 @@ class Game
       @current_player_letter = @player2_letter
     end
   end
-  
+
   def winner?
     Board.winner?(@table, @current_player_letter)
   end
-  
+
   def no_winner?
     Board.draw?(@table)
   end
-  
+
   def valid_position?
     puts "#{@current_player_name} enter a position from 1 to 9 "
     location = gets.chomp.to_i - 1
@@ -48,7 +48,7 @@ class Game
     end
     @location = location
   end
-  
+
   def add_to_table
     @table[@location] = @current_player_letter
     @table
