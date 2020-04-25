@@ -1,76 +1,100 @@
 #!/usr/bin/env ruby
+require_relative '../lib/game.rb'
 
-# user instructions
+puts
 puts 'Welcome to **Tic-Tac-toe**'
-puts 'In this game whichever player gets the first similar letters in a row, column or diagonal Wins!.'
-puts "There are only two letters to pick from 'X' and 'O'."
-puts 'At the begining of the game, each player will choose which letter they will be playing with,'
-puts 'once one player has selected a letter, the otherone is assigned the other letter automatically.'
-puts "Note: Player names are optional (just press 'Enter' to continue)"
-puts ''
-puts ''
+puts '      1   2   3  '
+puts '    -------------'
+puts '  1 | X | O | X | 3'
+puts '    -------------'
+puts '  4 | O | X | O | 6'
+puts '    -------------'
+puts '  7 | X | O | X | 9'
+puts '    -------------'
+puts '      7   8   9  '
+puts "In this game, there are only two letters to play with 'X' and 'O'. Whichever player gets the first similar letters in an entire row, column or diagonal WINS!!!."
+puts
+puts "At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically."
+puts
+game = Game.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
-# Get user input and set it to a variable
-p 'Enter name of player 1 or press Enter to skip'
+puts 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
-input1 == '' ? 'player 1' : input1
-p 'enter a letter to play with'
-player_1_letter = gets.chomp
-p "#{input1} chose #{player_1_letter}"
+input1 == '' ? input1 = 'player 1' : input1
+puts 'enter a letter to play with'
+player_1_letter = gets.chomp.upcase
+until %w[X O].include?(player_1_letter)
+  puts 'enter a valid letter to play with'
+  letter = gets.chomp.upcase
+  player_1_letter = letter if Game.valid_letter?(letter)
+end
 
-p 'Enter name of player 2 or press Enter to skip'
+game.player1_name = input1
+game.player1_letter = player_1_letter
+
+puts "#{input1} chose #{player_1_letter}"
+
+puts 'Enter name of player 2 or press Enter to skip'
 input2 = gets.chomp
-input2 == '' ? 'player 2' : input2
+input2 == '' ? input2 = 'player 2' : input2
 player_2_letter = 'O' if player_1_letter == 'X'
 player_2_letter = 'X' if player_1_letter == 'O'
-p "#{input2} will be playin with #{player_2_letter}"
+puts "#{input2} will be playin with #{player_2_letter}"
 
 puts ''
 
-p 'The game will start ...'
+game.player2_name = input2
+game.player2_letter = player_2_letter
+
+puts 'The game will start ...'
 
 puts ''
 
 game_on = true
 
-player = input1 # if i.even?
-# player = input2 if i.odd?
+puts '      1   2   3  '
+puts '    -------------'
+puts '  1 |   |   |   | 3'
+puts '    -------------'
+puts '  4 |   |   |   | 6'
+puts '    -------------'
+puts '  7 |   |   |   | 9'
+puts '    -------------'
+puts '      7   8   9  '
 
-while game_on # Loop for each move
-
-  p "#{player} enter Horizontal position  with a letter "
-  gets.chomp
-  p "#{player} enter Vertical position  with a number "
-  gets.chomp
-
-  valid = true
-  unless valid # checks if input from user is valid
-    puts "Error, input invalid. Please enter 'X' or 'O'"
-    next
+i = 0
+while game_on
+  game.current_player(i)
+  puts "#{game.current_player_name} enter a position from 1 to 9 "
+  position = gets.chomp
+  until game.valid_position?(position)
+    puts "Error, input invalid. #{game.current_player_name} Please re enter"
+    position = gets.chomp
   end
 
-  x1 = [%w[x o x], %w[x o x], %w[x o x]]
+  table = game.add_to_table(position.to_i)
 
-  p '      1   2   3  '
-  p '    -------------'
-  p "  A | #{x1[0][0]} | #{x1[0][1]} | #{x1[0][2]} |"
-  p '    -------------'
-  p "  B | #{x1[1][0]} | #{x1[2][1]} | #{x1[0][2]} |"
-  p '    -------------'
-  p "  C | #{x1[2][1]} | #{x1[2][1]} | #{x1[2][2]} |"
-  p '    -------------'
+  puts '      1   2   3  '
+  puts '    -------------'
+  puts "  1 | #{table[0]} | #{table[1]} | #{table[2]} | 3"
+  puts '    -------------'
+  puts "  4 | #{table[3]} | #{table[4]} | #{table[5]} | 6"
+  puts '    -------------'
+  puts "  7 | #{table[6]} | #{table[7]} | #{table[8]} | 9"
+  puts '    -------------'
+  puts '      7   8   9  '
 
-  draw = false
-  if draw # Condition for when game is draw
-    puts 'this is a Draw'
+  winner = game.winner?
+
+  if winner
+    puts "#{game.current_player_name} has won the game!"
     game_on = false
   end
 
-  winner = true
-
-  if winner
-    puts 'Player 1/2 is the winner of this round'
-    game_on = false # terminates when we have a winner
+  draw = game.no_winner?
+  if draw && !winner
+    puts 'this is a Draw'
+    game_on = false
   end
-
+  i += 1
 end
