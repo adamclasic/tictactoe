@@ -16,7 +16,7 @@ puts "In this game, there are only two letters to play with 'X' and 'O'. Whichev
 puts
 puts "At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically."
 puts
-game = Game.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+game = Game.new(Array.new(9, ' '))
 
 puts 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
