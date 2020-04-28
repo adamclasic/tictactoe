@@ -9,7 +9,7 @@ class Game
   end
 
   def self.valid_letter?(letter)
-    return true if %w[X O].include?(letter)
+    %w[X O].include?(letter)
   end
 
   def current_player(num)
