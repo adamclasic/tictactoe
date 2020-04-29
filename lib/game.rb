@@ -31,12 +31,11 @@ class Game
   end
 
   def valid_position?(position)
-    location = position.to_i
-    location != 0 && @table[location - 1] == ' '
+    position != 0 && @table[position - 1] == ' '
   end
 
-  def add_to_table(location)
-    @table[location - 1] = @current_player_letter
+  def add_to_table(position)
+    @table[position - 1] = @current_player_letter
     @table
   end
 end
