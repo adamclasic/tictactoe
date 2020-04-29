@@ -144,8 +144,7 @@ To play this game you need to:
 ### Built With
 This project was built using these technologies.
 * Ruby
-* Rubocop
-* VsCode
+* Rspec
 
 <!-- LIVE VERSION -->
 ## Live version
