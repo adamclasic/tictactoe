@@ -66,13 +66,13 @@ i = 0
 while game_on
   game.current_player(i)
   puts "#{game.current_player_name} enter a position from 1 to 9 "
-  position = gets.chomp
+  position = gets.chomp.to_i
   until game.valid_position?(position)
     puts "Error, input invalid. #{game.current_player_name} Please re enter"
-    position = gets.chomp
+    position = gets.chomp.to_i
   end
 
-  table = game.add_to_table(position.to_i)
+  table = game.add_to_table(position)
 
   puts '      1   2   3  '
   puts '    -------------'
