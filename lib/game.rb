@@ -26,7 +26,7 @@ class Game
     Board.winner?(@table, @current_player_letter)
   end
 
-  def no_winner?
+  def draw?
     Board.draw?(@table)
   end
 

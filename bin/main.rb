@@ -91,7 +91,7 @@ while game_on
     game_on = false
   end
 
-  draw = game.no_winner?
+  draw = game.draw?
   if draw && !winner
     puts 'this is a Draw'
     game_on = false
