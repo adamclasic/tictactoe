@@ -1,7 +1,5 @@
 class Board
 
-  private
-
   def self.winner?(arr, letter)
     return true if [
       arr[0..2].all?(letter),
