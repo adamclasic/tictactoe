@@ -1,6 +1,5 @@
 require 'board'
 
-
 RSpec.describe Board do
   describe '::winner?' do
     context 'when there is a winner' do

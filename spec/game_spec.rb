@@ -76,7 +76,7 @@ RSpec.describe Game do
     end
 
     context 'when a valid position' do
-      let(:position) {2}
+      let(:position) { 2 }
       it { should be true }
     end
 
@@ -89,9 +89,8 @@ RSpec.describe Game do
     let(:position) { 4 }
 
     it 'should set position to table' do
-    	game.current_player_letter = 'X'
-      expect(game.add_to_table(position)).to eq([" ", " ", " ", "X", " ", " ", " "," "," "])
+      game.current_player_letter = 'X'
+      expect(game.add_to_table(position)).to eq([' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' '])
     end
-
   end
 end

@@ -8,7 +8,6 @@ class Game
     @table = arr
   end
 
-
   def self.valid_letter?(letter)
     %w[X O].include?(letter)
   end
