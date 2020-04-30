@@ -1,4 +1,3 @@
-require 'board'
 require 'game'
 
 RSpec.describe Game do
@@ -14,6 +13,7 @@ RSpec.describe Game do
     let(:letter) { 'D' }
     it 'should accept a char (string) as an argument' do
       expect(letter).to be_kind_of String
+      expect(letter).not_to be_nil
     end
 
     context 'when letter valid' do
@@ -22,13 +22,12 @@ RSpec.describe Game do
     end
 
     context 'when letter not valid' do
-      let(:letter) { 'P' }
+      let(:letter) { 'N' }
       it { should be false }
     end
   end
 
   describe '#current_player' do
-    # subject(:game) {Game.new(Array.new(9, ' '))}
     subject { game.current_player(num) }
     let(:player1_name) { 'john' }
     let(:player2_name) { 'mary' }
@@ -36,7 +35,7 @@ RSpec.describe Game do
     let(:player2_letter) { 'O' }
 
     context 'when num even' do
-      let(:num) { 0 }
+      let(:num) { 2 }
 
       it 'should check if number is even?' do
         expect(num.even?).to eq(true)
@@ -51,10 +50,10 @@ RSpec.describe Game do
       end
     end
 
-    context 'when num odd' do
+    context 'when num not even' do
       let(:num) { 1 }
 
-      it 'should check if number is odd?' do
+      it 'should check if number is not even?' do
         expect(num.odd?).to be true
       end
 
@@ -73,10 +72,11 @@ RSpec.describe Game do
     let(:position) { 0 }
     it 'should accept an Integer (position) as an argument' do
       expect(position).to be_kind_of Integer
+      expect(position).not_to be_nil
     end
 
     context 'when a valid position' do
-      let(:position) { 3 }
+      let(:position) {2}
       it { should be true }
     end
 
@@ -86,57 +86,12 @@ RSpec.describe Game do
   end
 
   describe '#add_to_table' do
-    subject { game.add_to_table(position) }
-    let(:position) { 2 }
+    let(:position) { 4 }
 
-    it 'should accept an Integer (position) as an argument' do
-      expect(position).to be_kind_of Integer
+    it 'should set position to table' do
+    	game.current_player_letter = 'X'
+      expect(game.add_to_table(position)).to eq([" ", " ", " ", "X", " ", " ", " "," "," "])
     end
 
-    let(:current_player_letter) { 1 }
-    it 'should set table position to current player letter' do
-      game.table[position] = current_player_letter
-      expect(game.table[position]).to eq(current_player_letter)
-    end
-
-    it 'should return an array' do
-      should be_kind_of Array
-    end
-  end
-end
-
-RSpec.describe Board do
-  describe '::winner?' do
-    context 'when there is a winner' do
-      let(:table) { ['X', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' '] }
-      let(:current_player_letter) { 'X' }
-      it 'should return true' do
-        expect(Board.winner?(table, current_player_letter)).to eq(true)
-      end
-    end
-
-    context 'when there is no winner' do
-      let(:table) { ['X', ' ', ' ', 'O', ' ', ' ', 'X', ' ', ' '] }
-      let(:current_player_letter) { 'X' }
-      it 'should return false' do
-        expect(Board.winner?(table, current_player_letter)).to eq(false)
-      end
-    end
-  end
-
-  describe '::draw?' do
-    context 'when all positions are played' do
-      let(:table) { %w[X O X X O X X X X] }
-      it 'should return true' do
-        expect(Board.draw?(table)).to eq(true)
-      end
-    end
-
-    context 'when all positions not played' do
-      let(:table) { ['X', 'O', ' ', 'X', 'O', 'X', 'X', 'X', 'X'] }
-      it 'should return false' do
-        expect(Board.draw?(table)).to eq(false)
-      end
-    end
   end
 end
