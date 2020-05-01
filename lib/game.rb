@@ -2,7 +2,7 @@ require_relative './board.rb'
 
 class Game
   attr_writer :player1_name, :player2_name, :player1_letter, :player2_letter
-  attr_reader :current_player_letter, :current_player_name, :table
+  attr_accessor :current_player_letter, :current_player_name, :table
 
   def initialize(arr)
     @table = arr
