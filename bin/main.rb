@@ -16,7 +16,7 @@ puts "In this game, there are only two letters to play with 'X' and 'O'. Whichev
 puts
 puts "At the begining of the game, player 1 will choose either 'X' or 'O' and the other letter will be assigned to player 2 automatically."
 puts
-game = Game.new([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+game = Game.new(Array.new(9, ' '))
 
 puts 'Enter name of player 1 or press Enter to skip'
 input1 = gets.chomp
@@ -66,13 +66,13 @@ i = 0
 while game_on
   game.current_player(i)
   puts "#{game.current_player_name} enter a position from 1 to 9 "
-  position = gets.chomp
+  position = gets.chomp.to_i
   until game.valid_position?(position)
     puts "Error, input invalid. #{game.current_player_name} Please re enter"
-    position = gets.chomp
+    position = gets.chomp.to_i
   end
 
-  table = game.add_to_table(position.to_i)
+  table = game.add_to_table(position)
 
   puts '      1   2   3  '
   puts '    -------------'
@@ -91,7 +91,7 @@ while game_on
     game_on = false
   end
 
-  draw = game.no_winner?
+  draw = game.draw?
   if draw && !winner
     puts 'this is a Draw'
     game_on = false
