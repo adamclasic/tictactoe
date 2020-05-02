@@ -47,6 +47,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+  * [Testing](#testing)
 * [Live Version](#live-version)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
@@ -144,8 +145,10 @@ To play this game you need to:
 ### Built With
 This project was built using these technologies.
 * Ruby
-* Rubocop
-* VsCode
+* Rspec
+
+### Testing
+If you wish to test it. Install `Rspec`with `gem install rspec`. We used `rspec 3.9.1` but any version not older than `3.0`should work fine. Clone this repo to your local machine, cd into tictactoe directory and run `rspec`
 
 <!-- LIVE VERSION -->
 ## Live version

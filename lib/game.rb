@@ -2,14 +2,14 @@ require_relative './board.rb'
 
 class Game
   attr_writer :player1_name, :player2_name, :player1_letter, :player2_letter
-  attr_reader :current_player_letter, :current_player_name, :table
+  attr_accessor :current_player_letter, :current_player_name, :table
 
   def initialize(arr)
     @table = arr
   end
 
   def self.valid_letter?(letter)
-    return true if %w[X O].include?(letter)
+    %w[X O].include?(letter)
   end
 
   def current_player(num)
@@ -26,17 +26,16 @@ class Game
     Board.winner?(@table, @current_player_letter)
   end
 
-  def no_winner?
+  def draw?
     Board.draw?(@table)
   end
 
   def valid_position?(position)
-    location = position.to_i
-    location != 0 && @table[location - 1] == ' '
+    position != 0 && @table[position - 1] == ' '
   end
 
-  def add_to_table(location)
-    @table[location - 1] = @current_player_letter
+  def add_to_table(position)
+    @table[position - 1] = @current_player_letter
     @table
   end
 end
